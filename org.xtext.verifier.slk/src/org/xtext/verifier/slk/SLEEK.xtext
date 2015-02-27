@@ -1,0 +1,32 @@
+grammar org.xtext.verifier.slk.SLEEK with org.eclipse.xtext.common.Terminals
+
+generate sLEEK "http://www.xtext.org/verifier/slk/SLEEK"
+
+SLEEK:
+	(keywords += Argu)*
+;
+
+Argu:
+	Precodition | Data | Lemma | Argument | Print
+;
+
+Data:
+	'data' name = SLK
+;
+
+Lemma:
+	'lemma' name = SLK
+;
+
+Precodition:
+	'pred' name = SLK
+;
+Argument:
+	'checkentail' name = SLK
+;
+
+Print: 'print' name = SLK;
+
+terminal SLK : (WS)+ (!'.')*('|-')?(!'.')*'.' (WS)*;
+
+terminal ML_COMMENT: '/*' -> '*/';

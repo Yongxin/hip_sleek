@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="SLEEK Category"
+            id="SLEEK">
+      </category>
+      <view
+            name="SLEEK View"
+            icon="icons/sample.gif"
+            category="SLEEK"
+            class="sleek.views.SLEEKView"
+            id="sleek.views.SLEEKView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="sleek.views.SLEEKView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="SLEEK.actionSet"
+            label="SLEEK Action"
+            visible="true">
+         <menu
+               id="SLEEK.workbenchMenu"
+               label="SLEEK Verifier">
+            <separator
+                  name="additions">
+            </separator>
+         </menu>
+         <action
+               class="sleek.actions.SLEEKAction"
+               definitionId="SLEEK.verifyAll"
+               icon="icons/Whole.png"
+               id="sleek.actions.SLEEKAction"
+               label="SLEEK Verifier View"
+               toolbarPath="Normal/additions"
+               tooltip="Open SLEEK Verifier View">
+         </action>
+         <action
+               class="sleek.actions.SLEEKSelection"
+               definitionId="SLEEK.verifySelected"
+               icon="icons/Current.png"
+               id="sleek.actions.SLEEKSelection"
+               label="SLEEK Selection"
+               toolbarPath="Normal/additions"
+               tooltip="Verify Selected Part">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="sleek.wizards.SLEEK"
+            name="SLEEK Wizards">
+      </category>
+      <wizard
+            category="sleek.wizards.SLEEK"
+            class="sleek.wizards.SLEEKNewWizard"
+            icon="icons/sample.gif"
+            id="sleek.wizards.SLEEKNewWizard"
+            name="SLEEK Verifier file">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="sleek.viewAction.terminate"
+            targetID="sleek.views.SLEEKView">
+         <action
+               class="sleek.actions.SLEEKTerminate"
+               icon="icons/Stop.png"
+               id="sleek.viewAction.terminateButton"
+               label="Stop"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Stop Verification">
+         </action>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="SLEEK.commandCategory"
+            name="Sleek Commands">
+      </category>
+      <command
+            categoryId="SLEEK.commandCategory"
+            id="SLEEK.verifyAll"
+            name="Verify all entailments">
+      </command>
+      <command
+            categoryId="SLEEK.commandCategory"
+            id="SLEEK.verifySelected"
+            name="Verify selected content">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="SLEEK.verifyAll"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+1">
+      </key>
+      <key
+            commandId="SLEEK.verifySelected"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+2">
+      </key>
+   </extension>
+
+</plugin>
