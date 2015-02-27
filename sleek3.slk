@@ -14,6 +14,7 @@ print residue.
 lemma self::sortl<n, mi> -> self::ll<n>.
 
 checkentail x::sortl<10, _> |- x::ll<n> & n > 11.
+print residue.
 
 checkentail x::node<next = r1> * r1::node<next = aa> * y::node<> & b > 10 |- x::ll<c>.
 print residue.
