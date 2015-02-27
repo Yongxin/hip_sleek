@@ -1,0 +1,7 @@
+.metadata/
+SLEEK/bin/
+logs/
+oc.out
+org.xtext.verifier.slk.tests/bin/
+org.xtext.verifier.slk.ui/bin/
+org.xtext.verifier.slk/bin/
