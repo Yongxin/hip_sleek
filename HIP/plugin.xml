@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="HIP Category"
+            id="HIP">
+      </category>
+      <view
+            name="HIP View"
+            icon="icons/sample.gif"
+            category="HIP"
+            class="hip.views.HIPView"
+            id="hip.views.HIPView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="hip.views.HIPView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="hip.actionSet"
+            label="HIP Action"
+            visible="true">
+         <menu
+               id="hip.workbenchMenu"
+               label="HIP Verifier">
+            <separator
+                  name="additions">
+            </separator>
+         </menu>
+         <action
+               class="hip.actions.HIPAction"
+               definitionId="HIP.verifyAll"
+               icon="icons/sample.gif"
+               id="hip.actions.HIPAction"
+               label="HIP Verifier View"
+               style="push"
+               toolbarPath="Normal/additions"
+               tooltip="Verify the whole content">
+         </action>
+         <action
+               class="hip.actions.HIPSelection"
+               definitionId="HIP.verifySelected"
+               icon="icons/sample.gif"
+               id="hip.actions.HIPSelection"
+               label="HIP Selection"
+               style="push"
+               toolbarPath="Normal/addtions"
+               tooltip="Verify selected part">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="hip.wizards.HIP"
+            name="HIP Wizards">
+      </category>
+      <wizard
+            category="hip.wizards.HIP"
+            class="hip.wizards.HIPNewWizard"
+            icon="icons/sample.gif"
+            id="hip.wizards.HIPNewWizard"
+            name="HIP Verifier file">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="hip.viewAction.terminate"
+            targetID="hip.views.HIPView">
+         <action
+               class="hip.actions.HIPTerminate"
+               icon="icons/sample.gif"
+               id="hip.viewAction.terminateButton"
+               label="Stop"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Stop Verification">
+         </action>
+      </viewContribution>
+   </extension>
+
+</plugin>
